@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Birthday Sayani 🎂</title>
+
+<style>
+body{
+margin:0;
+padding:0;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+font-family:Arial;
+background: linear-gradient(135deg, #ff758c, #ff7eb3);
+overflow:hidden;
+color:white;
+}
+
+.container{
+text-align:center;
+background: rgba(0,0,0,0.4);
+padding:30px;
+border-radius:20px;
+box-shadow:0 0 25px rgba(0,0,0,0.5);
+}
+
+button{
+padding:12px 25px;
+font-size:18px;
+border:none;
+border-radius:25px;
+background:white;
+color:#ff4d6d;
+cursor:pointer;
+}
+
+img{
+width:220px;
+border-radius:15px;
+margin-top:20px;
+}
+
+.heart{
+position:fixed;
+top:-10px;
+font-size:25px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+to{
+transform:translateY(100vh);
+}
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container" id="mainBox">
+<h1 id="text">Wait... something special for you 🎁</h1>
+<button onclick="nextStep()">Click 😏</button>
+</div>
+
+<!-- ⚠️ audio body er baire rakhbo -->
+<audio id="music" preload="auto">
+  <source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+let step = 0;
+
+function nextStep(){
+
+step++;
+
+if(step==1){
+document.getElementById("text").innerText="Hey Sayani 👀";
+}
+
+else if(step==2){
+document.getElementById("text").innerText="Do you know what day it is today? 🤔";
+}
+
+else if(step==3){
+document.getElementById("text").innerText="Something very special happened today 😏";
+}
+
+else if(step==4){
+document.getElementById("text").innerText="Ready for surprise? 🎁";
+}
+
+else if(step==5){
+
+let music = document.getElementById("music");
+
+// 🔥 first play
+music.currentTime = 0;
+music.play().catch(()=>{});
+
+// ❗ শুধু container change করছি (body না)
+document.getElementById("mainBox").innerHTML=`
+<h1>🎂 HAPPY BIRTHDAY SAYANI ❤️</h1>
+<img id="slide" src="photo1.jpeg">
+<h2>You are amazing 😍</h2>
+<p>Stay happy always 💖</p>
+<p>From: Your annoying brother 😆</p>
+`;
+
+startSlideshow();
+startHearts();
+}
+
+}
+
+let photos=["photo1.jpeg","photo2.jpeg","photo3.jpeg","photo4.jpeg"];
+let i=0;
+
+function startSlideshow(){
+setInterval(()=>{
+i=(i+1)%photos.length;
+document.getElementById("slide").src=photos[i];
+},2000);
+}
+
+function startHearts(){
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.innerHTML="❤️";
+heart.className="heart";
+
+heart.style.left=Math.random()*100+"%";
+heart.style.animationDuration=(Math.random()*3+2)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},5000);
+
+},200);
+}
+
+</script>
+
+</body>
+</html>
