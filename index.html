@@ -3,6 +3,9 @@
 <head>
 <title>Happy Birthday Sayani 🎂</title>
 
+<!-- 📱 mobile optimization -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 body{
 margin:0;
@@ -17,14 +20,18 @@ overflow:hidden;
 color:white;
 }
 
+/* center card */
 .container{
 text-align:center;
 background: rgba(0,0,0,0.4);
-padding:30px;
+padding:25px;
 border-radius:20px;
 box-shadow:0 0 25px rgba(0,0,0,0.5);
+width:90%;
+max-width:500px;
 }
 
+/* button */
 button{
 padding:12px 25px;
 font-size:18px;
@@ -40,24 +47,32 @@ button:hover{
 transform:scale(1.1);
 }
 
-/* 🔥 BIG PHOTO STYLE */
+/* 🔥 FULL MOBILE PHOTO */
 img{
-width:60%;
-max-width:450px;
+width:90%;
+max-width:500px;
 border-radius:20px;
 margin-top:20px;
 box-shadow:0 0 25px rgba(255,255,255,0.8);
 transition:0.3s;
+animation:zoom 1.5s ease;
 }
 
 img:hover{
 transform:scale(1.05);
 }
 
+@keyframes zoom{
+from{transform:scale(0.8);}
+to{transform:scale(1);}
+}
+
+/* text glow */
 h1{
 text-shadow:0 0 10px rgba(255,255,255,0.8);
 }
 
+/* ❤️ heart rain */
 .heart{
 position:fixed;
 top:-10px;
@@ -113,7 +128,7 @@ else if(step==5){
 
 let music = document.getElementById("music");
 
-// 🔥 MUSIC FIX
+// 🎵 music start (safe)
 music.currentTime = 0;
 music.play().catch(()=>{});
 
@@ -164,5 +179,10 @@ heart.remove();
 
 </body>
 </html>
+
+
+
+
+
 
 
