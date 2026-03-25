@@ -33,12 +33,29 @@ border-radius:25px;
 background:white;
 color:#ff4d6d;
 cursor:pointer;
+transition:0.3s;
 }
 
+button:hover{
+transform:scale(1.1);
+}
+
+/* 🔥 BIG PHOTO STYLE */
 img{
-width:220px;
-border-radius:15px;
+width:60%;
+max-width:450px;
+border-radius:20px;
 margin-top:20px;
+box-shadow:0 0 25px rgba(255,255,255,0.8);
+transition:0.3s;
+}
+
+img:hover{
+transform:scale(1.05);
+}
+
+h1{
+text-shadow:0 0 10px rgba(255,255,255,0.8);
 }
 
 .heart{
@@ -64,7 +81,6 @@ transform:translateY(100vh);
 <button onclick="nextStep()">Click 😏</button>
 </div>
 
-<!-- ⚠️ audio body er baire rakhbo -->
 <audio id="music" preload="auto">
   <source src="birthday.mp3" type="audio/mpeg">
 </audio>
@@ -97,11 +113,11 @@ else if(step==5){
 
 let music = document.getElementById("music");
 
-// 🔥 first play
+// 🔥 MUSIC FIX
 music.currentTime = 0;
 music.play().catch(()=>{});
 
-// ❗ শুধু container change করছি (body না)
+// শুধু container change (audio safe)
 document.getElementById("mainBox").innerHTML=`
 <h1>🎂 HAPPY BIRTHDAY SAYANI ❤️</h1>
 <img id="slide" src="photo1.jpeg">
@@ -148,3 +164,5 @@ heart.remove();
 
 </body>
 </html>
+
+
